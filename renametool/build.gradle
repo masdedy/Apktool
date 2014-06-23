@@ -1,0 +1,29 @@
+//apply plugin: 'gradle-one-jar'
+//apply plugin: 'scala'
+
+//repositories {
+//    mavenCentral()
+//}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+    }
+}
+
+apply plugin: 'gradle-one-jar'
+apply plugin: 'scala'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  compile project(':brut.apktool:apktool-lib')
+  compile 'org.scala-lang:scala-library:2.11.1'
+}
+
+task makeJar(type: OneJar) {
+    mainClass = 'com.ap.tools.RenameTool'
+}
